@@ -103,7 +103,7 @@ This project implements an end-to-end Multi-Stream Short-Time Fourier Transform 
 
 An interactive, web-based demonstration and presentation dashboard is included:
 
-Launch Interactive Capstone Visualizer (https://mayankrana.github.io/cuda-cufft-spectral-pipeline/)
+Launch Interactive Capstone Visualizer (https://mayankrana.github.io/cuda-cufft-gpu-accelerated-spectral-engine)
 
 Features:
 - Time-domain waveform canvas and audio playback preview
