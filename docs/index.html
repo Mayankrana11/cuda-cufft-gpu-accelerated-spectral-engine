@@ -263,7 +263,7 @@
     </div>
     <div style="text-align: right;">
       <span style="font-size: 12px; color: var(--text-muted);">Author: Mayank Rana</span><br>
-      <a href="https://github.com/Jatin288/cuda-cufft-spectral-pipeline" target="_blank" style="color: var(--accent); font-size: 12px; text-decoration: none;">GitHub Repository &rarr;</a>
+      <a href="https://github.com/Mayankrana11/cuda-cufft-gpu-accelerated-spectral-engine" target="_blank" style="color: var(--accent); font-size: 12px; text-decoration: none;">GitHub Repository &rarr;</a>
     </div>
   </header>
 
@@ -31467,7 +31467,15 @@
     canvas.width = rect.width;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const spec = traceData.samples[currentSignalIdx].spectrogram_preview || [];
+
+    let spec = traceData.samples[currentSignalIdx].spectrogram_preview || [];
+
+    // FIX: If spectrogram data is missing, synthesize it from time-domain samples
+    if (spec.length === 0) {
+      const samples = traceData.samples[currentSignalIdx].samples || [];
+      spec = synthesizeSpectrogram(samples);
+    }
+
     if (spec.length === 0) return;
 
     const frames = spec.length;
